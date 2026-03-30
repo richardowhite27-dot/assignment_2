@@ -1,0 +1,50 @@
+/* Project: JA Threads - IA2 
+    Student Name: Richardo White 
+    Student ID: 2103123 
+    Module: CIT2011 - Web Programming
+*/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart | JA Threads</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body style="background:#f4f4f4; font-family:Arial; margin:0;">
+
+    <nav style="background:#000; padding:20px; color:#febd11; text-align:center; font-weight:bold;">🇯🇲 JA Threads</nav>
+
+    <main style="max-width:800px; margin:40px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+        <table style="width:100%; border-collapse:collapse;">
+            <thead>
+                <tr style="border-bottom:2px solid #eee; text-align:left;">
+                    <th style="padding:10px;">Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+
+        <div style="margin-top:20px; text-align:right;">
+            <p>Sub-total: <span id="sub-total">$0 JMD</span></p>
+            <p>Tax: <span id="tax-amount">$0 JMD</span></p>
+            <h2 style="color:#007749;">Total: <span id="final-total">$0 JMD</span></h2>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:30px;">
+            <button onclick="continueShopping()" style="flex:1; padding:15px; background:#666; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">
+                CONTINUE SHOPPING
+            </button>
+            <button onclick="goToCheckout()" style="flex:2; padding:15px; background:#007749; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">
+                PROCEED TO CHECKOUT
+            </button>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>
