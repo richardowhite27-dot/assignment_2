@@ -1,4 +1,4 @@
-/* IA2 Project: JA Threads | Richardo White- 2103123 */
+/* IA2 Project: JA Threads | Richardo White - 2103123 */
 
 const products = [
     { id: 1, name: "Independence '62 Heritage", price: 3500, img: "jamaian_1962_tee.jpg", desc: "Classic fit celebrating Jamaica's birth with premium gold-stitch detailing." },
@@ -20,9 +20,10 @@ function displayProducts() {
     if (!grid) return;
     grid.innerHTML = "";
     products.forEach(p => {
+        // Ensure "Assets" matches your GitHub folder name exactly (Case-Sensitive)
         grid.innerHTML += `
             <div class="product-card">
-                <img src="../assets/${p.img}" alt="${p.name}">
+                <img src="../Assets/${p.img}" alt="${p.name}">
                 <h3>${p.name}</h3>
                 <p class="product-desc">${p.desc}</p>
                 <p class="price">$${p.price.toLocaleString()} JMD</p>
@@ -70,7 +71,19 @@ function updateAllDisplays() {
     }
 }
 
-// --- NAVIGATION & FORMS ---
+// --- NAVIGATION FUNCTIONS (Fixes your buttons) ---
+function continueShopping() {
+    window.location.href = "products.html";
+}
+
+function goToCheckout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+    } else {
+        window.location.href = "checkout.html";
+    }
+}
+
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
