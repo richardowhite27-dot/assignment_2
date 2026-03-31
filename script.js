@@ -20,7 +20,6 @@ function displayProducts() {
     if (!grid) return;
     grid.innerHTML = "";
     products.forEach(p => {
-        // Ensure "Assets" matches your GitHub folder name exactly (Case-Sensitive)
         grid.innerHTML += `
             <div class="product-card">
                 <img src="../Assets/${p.img}" alt="${p.name}">
@@ -71,7 +70,35 @@ function updateAllDisplays() {
     }
 }
 
-// --- NAVIGATION FUNCTIONS (Fixes your buttons) ---
+// --- ORDER PROCESSING ---
+function processOrder() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    // Step 1: Confirmation Prompt
+    const confirmOrder = confirm("Are you sure you want to complete your order?");
+    
+    if (confirmOrder) {
+        // Step 2: Success Message
+        alert("Order Complete! Thank you for shopping with JA Threads.");
+        
+        // Step 3: Clear Cart
+        clearCart();
+        
+        // Step 4: Redirect to Home (login)
+        window.location.href = "../index.html"; 
+    }
+}
+
+function clearCart() { 
+    cart = [];
+    localStorage.removeItem('ja_threads_cart'); 
+    updateAllDisplays();
+}
+
+// --- NAVIGATION ---
 function continueShopping() {
     window.location.href = "products.html";
 }
@@ -84,17 +111,26 @@ function goToCheckout() {
     }
 }
 
-const loginForm = document.getElementById('loginForm');
-if (loginForm) {
-    loginForm.addEventListener('submit', e => {
-        e.preventDefault();
-        window.location.href = "codes/products.html";
-    });
-}
-
-function clearCart() { localStorage.removeItem('ja_threads_cart'); }
-
+// --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => { 
     if (document.getElementById('product-grid')) displayProducts();
     updateAllDisplays(); 
+
+    // Link the Checkout form submit to processOrder
+    const checkoutForm = document.getElementById('checkout-form');
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            processOrder();
+        });
+    }
+
+    // Link Login form
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', e => {
+            e.preventDefault();
+            window.location.href = "codes/products.html";
+        });
+    }
 });
