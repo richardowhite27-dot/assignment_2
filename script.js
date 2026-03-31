@@ -87,8 +87,8 @@ function processOrder() {
         // Step 3: Clear Cart
         clearCart();
         
-        // Step 4: Redirect to Home (login)
-        window.location.href = "../index.html"; 
+        // Step 4: Redirect to Shop (Fixed path from root redirect to local page)
+        window.location.href = "products.html"; 
     }
 }
 
